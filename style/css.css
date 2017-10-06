@@ -1,0 +1,198 @@
+html,body{
+    height: 100%;
+    /***
+    禁止选择
+    -webkit-user-select : none;
+    -moz-user-select    : none;
+    -ms-user-select     : none;
+    user-select         : none;
+    ***/
+}
+.wrap {
+    display : -moz-flex;
+    display : -webkit-flex;
+    display : flex;
+    height: 100%;
+}
+
+.left {
+    background : #10141d;
+    width      : 170px;
+}
+
+.center {
+    background : #f4f4f4;
+    width      : 237px;
+    position: relative;
+    overflow: auto;
+    height: 100%;
+}
+
+.right {
+    background   : #fff;
+    -moz-flex    : 1;
+    -webkit-flex : 1;
+    flex         : 1;
+    -webkit-box-shadow : 0 0 6px #f8b9b7;
+    -moz-box-shadow    : 0 0 6px #f8b9b7;
+    box-shadow         : 0 0 6px #f8b9b7;
+    padding: 20px;
+    box-sizing: border-box;
+    height: 100%;
+    overflow: auto;
+}
+/****************left*******************/
+.photo {
+    width            : 76px;
+    height           : 76px;
+    background-image : url("images/photo.jpg");
+    background-size  : 100% 100%;
+    border-radius    : 70px;
+    margin           : 40px auto 15px auto;
+}
+
+.user {
+    text-align : center;
+    color      : #fff;
+    cursor     : pointer;
+}
+
+.name {
+    font-size : 18px;
+    opacity   : 0.6;
+}
+
+.msg {
+    font-size : 14px;
+    padding   : 0 10px;
+    opacity   : 0.4;
+}
+
+.desc{
+    padding   : 0 10px;
+    font-size: 12px;
+    opacity: 0.3;
+}
+
+.name:hover, .msg:hover,.desc:hover {
+    opacity : 0.8;
+}
+
+.hr {
+    background : #fff;
+    height     : 1px;
+    border     : 0px;
+    opacity    : 0.1;
+}
+
+.left_ul {
+    padding    : 0;
+    margin     : 0;
+    display    : block;
+    list-style : none;
+    margin-bottom: 10px;
+}
+
+.left_ul li {
+    display        : block;
+    list-style     : none;
+    padding-top    : 5px;
+    padding-bottom : 5px;
+}
+
+.left_ul .title {
+    color        : #fff;
+    opacity      : 0.6;
+    padding-left : 15px;
+    font-size    : 14px;
+}
+
+.left_ul .title .fa {
+    margin-right : 5px;
+}
+
+.left_ul .item {
+    color        : #fff;
+
+    padding-left : 40px;
+    font-size    : 14px;
+}
+
+.left_ul .item_a {
+    color   : #fff;
+    opacity : 0.4;
+}
+.left_ul .active{
+    opacity : 0.8;
+}
+
+.left_ul .item_a:hover, .left_ul .item_a:focus {
+    color   : #fff;
+    opacity : 0.8;
+}
+
+
+
+/*************right****************/
+.line{
+    position : absolute;
+    width: 1px;
+    background: #d3d3d3;
+    top:23px;
+    left : 20px;
+}
+.ball{
+    width: 9px;
+    height: 9px;
+    background: #d54925;
+    border-radius: 10px;
+    position: absolute;
+    display: inline-block;
+    left: 16px;
+    opacity: 1;
+}
+.ball:hover{
+    opacity: 1;
+}
+.entity{
+    height: 280px;
+    margin-left: 40px;
+    margin-top: 20px;
+    color        : #000;
+    cursor: pointer;
+}
+.entity .header .time{
+    opacity      : 0.4;
+    font-size    : 12px;
+}
+.entity .header .title{
+    opacity      : 0.6;
+    margin-top: 10px;
+    font-size: 16px;
+}
+.entity .body{
+    opacity      : 0.2;
+    font-size    : 14px;
+    padding-top: 10px;
+}
+.entity .footer{
+    opacity      : 0.6;
+    padding-top: 10px;
+}
+.entity .content{
+    display: none;
+}
+.entity:hover .header .time{
+    opacity      : 0.6;
+}
+.entity:hover .header .title{
+    opacity      : 0.9;
+}
+.entity:hover .body{
+    opacity      : 0.6;
+}
+.entity:hover .footer{
+    opacity      : 0.8;
+}
+
+/***********right************/
