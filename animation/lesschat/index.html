@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../jquery.js"></script>
+    <script src="../prefixfree.min.js"></script>
+    <script src="../jquery.lwtCountdown-1.0.js"></script>
+    <link rel="stylesheet" type="text/css" href="css.css?v=1.3.3">
+    <style>
+    .navbar-default {
+        background: #fbfbfb;
+        border: 0px;
+    }
+    .navbar-default .container {
+        max-width: 970px;
+        padding-top: 15px;
+    }
+    .navbar-default .navbar-nav li a {
+        color: #428bca;
+        font-size: 16px;
+        padding: 20px 20px;
+    }
+    .navbar-default .navbar-nav li a:hover {
+        color: #2a6496;
+        background: none;
+    }
+    .navbar-default .navbar-nav .active a {
+        background: none;
+    }
+    .navbar-default .navbar-nav .active a:hover {
+        background: none;
+    }
+    .navbar-default .navbar-nav .active a:focus {
+        background: none;
+    }
+    .nav-user {
+        color: #fffffa;
+        line-height: 46px;
+    }
+    .nav-user a {
+        color: #777777;
+    }
+    .nav-user a:hover {
+        color: #fffffa;
+    }
+    .nav-user .name {
+        color: #fffffa;
+    }
+    .error-panel {
+        margin: 10% auto;
+        text-align: center;
+    }
+    .error-panel .title {
+        font-size: 108px;
+    }
+    html,
+    body {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        min-height: 850px;
+    }
+    body {
+        background: url("img/wrap_bg.png") no-repeat bottom #f9f8fc;
+        background-size: 100%;
+    }
+    .wrap {
+        min-height: 830px;
+        position: relative;
+    }
+    .container {
+        width: 100%;
+        height: 500px;
+        position: absolute;
+        top: 20px;
+        left: 0px;
+        z-index: 1;
+    }
+    .content {
+        width: 100%;
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        z-index: 2;
+    }
+    .content .content_body {
+        max-width: 1024px;
+        box-sizing: border-box;
+        margin: 50px auto 0px auto;
+    }
+    .content .content_body .logo {
+        width: 209px;
+        height: 86px;
+        background: url("img/logo.png") no-repeat;
+        background-size: 100%;
+        float: left;
+        margin-left: 10px;
+    }
+    .content .content_body .first_btn {
+        float: right;
+        padding: 10px 30px;
+        border: 1px #51bcb6  solid;
+        border-radius: 3px;
+        margin-right: 20px;
+        margin-top: 20px;
+        background: #f9f8fc;
+    }
+    .content .content_body .first_btn:hover,
+    .content .content_body .first_btn:active {
+        border: 1px #51bcb6  solid;
+        color: #fff;
+        background: #51bcb6;
+        text-decoration: none;
+    }
+    .content .content_body .login_btn {
+        float: right;
+        padding: 10px 30px;
+        border-radius: 3px;
+        color: #767d93;
+        margin-top: 20px;
+        margin-right: 10px;
+    }
+    .content .content_body .login_btn:hover,
+    .content .content_body .login_btn:active {
+        color: #51bcb6;
+        text-decoration: none;
+    }
+    .content .content_body .slogen {
+        max-width: 963px;
+        height: 194px;
+        margin: 30px auto 0px auto;
+        background: url("img/slogen.png") no-repeat center;
+        background-size: 95%;
+        padding: 10px;
+    }
+    .content .content_body .countdown_slogen {
+        text-align: center;
+        font-size: 28px;
+        font-weight: bold;
+        color: #333c4e;
+        margin-top: 110px;
+    }
+    .content .content_body #countdown_dashboard {
+        height: 82px;
+        margin-top: 30px;
+        text-align: center;
+    }
+    .content .content_body .dash {
+        width: 110px;
+        height: 82px;
+        display: inline-block;
+        margin-left: 2px;
+        padding-left: 13px;
+        position: relative;
+        color: #333;
+        margin: 0px 20px;
+    }
+    .content .content_body .dash .digit {
+        font-size: 82px;
+        line-height: 82px;
+        color: #f36b61;
+        font-weight: bold;
+        float: left;
+        width: 45px;
+        text-align: center;
+        position: relative;
+        margin-top: -10px;
+    }
+    .content .content_body .dash_title {
+        right: -30px;
+        color: #333c4e;
+        font-weight: bold;
+        font-size: 25px;
+        position: absolute;
+    }
+    .img {
+        position: absolute;
+        width: 0px;
+        height: 0px;
+        top: 250px;
+        left: 700px;
+        transition: all 0.5s;
+        border-radius: 80px;
+        opacity: 0.8;
+        -webkit-filter: blur(0.2px);
+        -moz-filter: blur(0.2px);
+        filter: progid:DXImageTransform.Microsoft.Blur(PixelRadius='0.2');
+        filter: blur(0.2px);
+    }
+    .logo_ico {
+        display: block;
+        position: absolute;
+        width: 0px;
+        height: 0px;
+        top: 250px;
+        left: 700px;
+        transition: all 0.5s;
+        border-radius: 80px;
+        opacity: 0.8;
+    }
+    .logo_1 {
+        background: url("img/mm/mm1.jpg") center no-repeat;
+        background-size: 100%;
+    }
+    .blur {
+        -webkit-filter: blur(3px);
+        -moz-filter: blur(3px);
+        filter: url(blur.svg#blur);
+        filter: progid:DXImageTransform.Microsoft.Blur(PixelRadius='3');
+        filter: blur(3px);
+    }
+    .ele_cricle {
+        position: absolute;
+        width: 0px;
+        height: 0px;
+        top: 250px;
+        left: 700px;
+        transition: all 0.5s;
+        border-radius: 80px;
+        opacity: 0.8;
+        display: block;
+    }
+    .yellow_c {
+        background: #fde36b;
+    }
+    .blue_c {
+        background: #8c9df0;
+    }
+    .red_c {
+        background: #f6938d;
+    }
+    .green_c {
+        background: #9ad6d4;
+    }
+    @keyframes animation {
+        0% {
+            transform: scale(1.1);
+        }
+        4.7% {
+            transform: scale(1.2);
+        }
+        9.41% {
+            transform: scale(1.3);
+        }
+        13.61% {
+            transform: scale(1.4);
+        }
+        17.52% {
+            transform: scale(1.5);
+        }
+        21.32% {
+            transform: scale(1.6);
+        }
+        25.23% {
+            transform: scale(1.7);
+        }
+        29.93% {
+            transform: scale(1.5);
+        }
+        36.74% {
+            transform: scale(1.4);
+        }
+        44.44% {
+            transform: scale(1.3);
+        }
+        59.86% {
+            transform: scale(1.2);
+        }
+        75.28% {
+            transform: scale(1);
+        }
+        90.69% {
+            transform: scale(1.1);
+        }
+        100% {
+            transform: scale(1);
+        }
+    }
+    @media (max-width: 660px) {
+        .content .content_body .logo {
+            width: 100px;
+        }
+        .content .content_body .first_btn {
+            padding: 5px 10px;
+            margin-top: 0px;
+        }
+        .content .content_body .login_btn {
+            padding: 5px 10px;
+            margin-top: 0px;
+        }
+        .content .content_body .countdown_slogen {
+            font-size: 18px;
+            margin-top: 200px;
+        }
+        .content .content_body .dash {
+            width: 50px;
+            height: 50px;
+            margin-left: 0px;
+            padding-left: 0px;
+            margin: 0px 10px;
+        }
+        .content .content_body .dash .digit {
+            font-size: 32px;
+            line-height: 32px;
+            width: 25px;
+            margin-top: 0px;
+        }
+        .content .content_body .dash_title {
+            right: -20px;
+            font-size: 14px;
+        }
+    }
+    @media (max-width: 320px) {
+        .content .content_body .logo {
+            width: 100px;
+        }
+        .content .content_body .first_btn {
+            padding: 5px 10px;
+            margin-top: 0px;
+        }
+        .content .content_body .login_btn {
+            padding: 5px 10px;
+            margin-top: 0px;
+        }
+        .content .content_body .countdown_slogen {
+            font-size: 18px;
+            margin-top: 300px;
+        }
+        .content .content_body .dash {
+            width: 50px;
+            height: 50px;
+            margin-left: 0px;
+            padding-left: 0px;
+            margin: 0px 10px;
+        }
+        .content .content_body .dash .digit {
+            font-size: 32px;
+            line-height: 32px;
+            width: 25px;
+            margin-top: 0px;
+        }
+        .content .content_body .dash_title {
+            right: -20px;
+            font-size: 14px;
+        }
+    }
+    </style>
+</head>
+<body>
+<div class="wrap">
+    <div id="container" class="container">
+    </div>
+    <div class="content">
+        <div class="content_body">
+            <p class="clearfix">
+                <span class="logo"></span>
+                <a href="/signin"  class="login_btn">登  录</a>
+                <a href="/apply"   class="first_btn">抢先体验</a>
+            </p>
+            <div class="slogen"></div>
+            <p class="countdown_slogen">距离纷云登录地球还有</p>
+
+            <div id="countdown_dashboard">
+                <div class="dash days_dash">
+                    <span class="dash_title">天</span>
+                    <div class="digit">0</div>
+                    <div class="digit">0</div>
+                </div>
+
+                <div class="dash hours_dash">
+                    <span class="dash_title">时</span>
+                    <div class="digit">0</div>
+                    <div class="digit">0</div>
+                </div>
+
+                <div class="dash minutes_dash">
+                    <span class="dash_title">分</span>
+                    <div class="digit">0</div>
+                    <div class="digit">0</div>
+                </div>
+
+                <div class="dash seconds_dash">
+                    <span class="dash_title">秒</span>
+                    <div class="digit">0</div>
+                    <div class="digit">0</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="index">
+    index
+</div>
+</body>
+</html>
+        <script>
+
+        (function($){
+            $.imgRandom = function(options){
+                op = {
+                    id:'',
+                    data:[]
+                };
+                $.extend(op, options);
+                var _str = "";
+                var _sty = "<style>";
+                var _container = $('#'+options.id);
+                _container.empty();
+                var _wmax = _container.width();
+                var _hmax = _container.height();
+                var _row = 6;
+                var _col = 5;
+                var _sl = _wmax/6;
+                var _st = _hmax/5;
+                var _maxw = 70;
+                var _minw = 30;
+                var _cmaxw = 20;
+                var _cminw = 10;
+                var _sub = [0,4.7,9.41,13.61,17.52,21.32,25.23,29.93,36.74,44.44,59.86,75.28,90.69,100];
+                $(op.data).each(function (index, item) {
+                    item.left = parseInt(Math.random()*((index%_row+1)*_sl-index%_row*_sl+1) + index%_row*_sl);
+                    item.top = parseInt(Math.random()*((index%_col+1)*_st-index%_col*_st+1) + index%_col*_st);
+
+                    if(item.type === 'img'){
+                        item.width=item.height = parseInt(Math.random()*(_maxw-_minw+1) + _minw);
+                        if((item.left+item.width)>_wmax){
+                            item.left = item.left-item.width-10;
+                        }
+                        _str += '<img id="'+item.id+'" rel="' + index + '" src="logo/' + item.name + '" style="opacity:'+(parseInt(Math.random()*(100-40+1) + 40)/100)+';left:'+(parseInt(Math.random()*(800-50-700+1) + 700))+'px;top:'+(parseInt(Math.random()*(300-50-200+1) + 200))+'px"  class="img ele"/>';
+                    }else if(item.type === 'circle'){
+                        item.width=item.height = parseInt(Math.random()*(_cmaxw-_cminw+1) + _cminw);
+                        if((item.left+item.width)>_wmax){
+                            item.left = item.left-item.width-10;
+                        }
+                        _str += '<span id="'+item.id+'" rel="' + index + '" class="ele_cricle blur ele ' + item.name + '" style="opacity:'+(parseInt(Math.random()*(100-40+1) + 40)/100)+';left:'+(parseInt(Math.random()*(800-50-700+1) + 700))+'px;top:'+(parseInt(Math.random()*(300-50-200+1) + 200))+'px;width:'+item.width+'px;height:'+item.height+'px;"/>';
+                    }
+                    _sty += '@keyframes animat' + index + ' {';
+                    $(_sub).each(function(i,n){
+                        _sty += n+'% {';
+                        _sty += 'transform : translate('+parseInt(Math.random()*(4-(-4)+1) + (-4))+'px, '+parseInt(Math.random()*(4-(-4)+1) + (-4))+'px)';
+                        _sty += '}';
+                    });
+                    _sty += '}';
+                });
+                _sty += "</style>";
+                $(_sty).appendTo(_container);
+                $(_str).appendTo(_container);
+
+
+                setTimeout(function () {
+                    $('.ele').each(function () {
+                        var _obj = $(this);
+                        var _i = parseInt(_obj.attr('rel'));
+                        var _da = op.data[_i];
+                        _obj.css({
+                            'transition-delay': "" + (10 * _i) + "ms",
+                            'width'           : _da.width,
+                            'height'          : _da.height,
+                            'top'             : _da.top,
+                            'left'            : _da.left,
+                            'animation'       : 'animation 2000ms linear both'
+                        });
+                    });
+                    setTimeout(function () {
+                        $('.ele').each(function () {
+                            var _obj = $(this);
+                            var _i = parseInt(_obj.attr('rel'));
+                            _obj.css({
+                                'animation'       : 'animat'+_i+' 10s linear both infinite alternate'
+                            });
+                        });
+                    }, 3000);
+                }, 10);
+
+
+                $(window).resize(function(){
+                    var _wmax = _container.width();
+                    var _hmax = _container.height();
+                    var _sl = _wmax/6;
+                    var _st = _hmax/5;
+                    $(op.data).each(function (index, item) {
+                        item.left = parseInt(Math.random()*((index%_row+1)*_sl-index%_row*_sl+1) + index%_row*_sl);
+                        item.top = parseInt(Math.random()*((index%_col+1)*_st-index%_col*_st+1) + index%_col*_st);
+                        item.width=item.height = parseInt(Math.random()*(_maxw-_minw+1) + _minw);
+                        if((item.left+item.width)>_wmax){
+                            item.left = item.left-item.width-10;
+                        }
+                        $('#'+item.id).css({
+                            left:item.left,
+                            top:item.top
+                        });
+                    });
+                });
+
+            }
+        })(jQuery);
+        $(document).ready(function () {
+
+            var _targetTime = new Date('6/29/2018 17:8:0' );
+            var _nowTime = new Date();
+            var _diff = Math.floor((_targetTime.valueOf()-_nowTime.valueOf())/1000);
+            if(_diff>0){
+                $('.wrap').show();
+                $('.index').hide();
+            }else{
+                $('.wrap').hide();
+                $('.index').show();
+            }
+
+
+
+
+
+
+
+
+
+            $.imgRandom({
+                id:'container',
+                data:[{
+                    id:'1',
+                    type:'img',
+                    name  : 'web-ui-s-aa.png'
+                },{
+                    id:'2',
+                    type:'img',
+                    name  : 'web-ui-s-en.png'
+                },{
+                    id:'3',
+                    type:'img',
+                    name  : 'web-ui-s-fir.png'
+                },{
+                    id:'4',
+                    type:'img',
+                    name:'web-ui-s-gc-01.png'
+                },{
+                    id:'5',
+                    type:'img',
+                    name:'web-ui-s-gh.png'
+                },{
+                    id:'6',
+                    type:'img',
+                    name:'web-ui-s-jinshuju.png'
+                },{
+                    id:'7',
+                    type:'img',
+                    name:'web-ui-s-jkb.png'
+                },{
+                    id:'8',
+                    type:'img',
+                    name:'web-ui-s-jt.png'
+                },{
+                    id:'9',
+                    type:'img',
+                    name:'web-ui-s-maike.png'
+                },{
+                    id:'10',
+                    type:'img',
+                    name:'web-ui-s-mei.png'
+                },{
+                    id:'11',
+                    type:'img',
+                    name:'web-ui-s-mind.png'
+                },{
+                    id:'12',
+                    type:'img',
+                    name:'web-ui-s-next.png'
+                },{
+                    id:'13',
+                    type:'img',
+                    name:'web-ui-s-ping.png'
+                },{
+                    id:'14',
+                    type:'img',
+                    name:'web-ui-s-qing.png'
+                },{
+                    id:'15',
+                    type:'img',
+                    name:'web-ui-s-weibo.png'
+                },{
+                    id:'16',
+                    type:'img',
+                    name:'web-ui-s-weixin.png'
+                },{
+                    id:'17',
+                    type:'img',
+                    name:'web-ui-s-wt.png'
+                },{
+                    id:'18',
+                    type:'img',
+                    name:'web-ui-s-yangcong.png'
+                },{
+                    id:'19',
+                    type:'img',
+                    name:'web-ui-s-yd.png'
+                },{
+                    id:'20',
+                    type:'img',
+                    name:'web-ui-s-ykf.png'
+                },{
+                    id:'21',
+                    type:'circle',
+                    name:'yellow_c'
+                },{
+                    id:'22',
+                    type:'circle',
+                    name:'yellow_c'
+                },{
+                    id:'23',
+                    type:'circle',
+                    name:'yellow_c'
+                },{
+                    id:'24',
+                    type:'circle',
+                    name:'blue_c'
+                },{
+                    id:'25',
+                    type:'circle',
+                    name:'blue_c'
+                },{
+                    id:'26',
+                    type:'circle',
+                    name:'blue_c'
+                },{
+                    id:'27',
+                    type:'circle',
+                    name:'red_c'
+                },{
+                    id:'28',
+                    type:'circle',
+                    name:'red_c'
+                },{
+                    id:'29',
+                    type:'circle',
+                    name:'red_c'
+                },{
+                    id:'30',
+                    type:'circle',
+                    name:'green_c'
+                },{
+                    id:'31',
+                    type:'circle',
+                    name:'green_c'
+                },{
+                    id:'32',
+                    type:'circle',
+                    name:'green_c'
+                }]
+            });
+
+            $('#countdown_dashboard').countDown({
+                omitWeeks:true,
+                targetDate: {
+                    'day': 		29,
+                    'month': 	6,
+                    'year': 	2018,
+                    'hour': 	17,
+                    'min': 		8,
+                    'sec': 		0
+                },
+                onComplete:function(){
+                    $('.wrap').hide();
+                    $('.index').show();
+                }
+            });
+        });
+
+        </script>

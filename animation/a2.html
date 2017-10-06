@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>animation</title>
+    <script src="jquery.js"></script>
+    <script src="prefixfree.min.js"></script>
+    <link href='../resource/css/font-awesome.css' rel='stylesheet'/>
+    <link href='../resource/css/common.css' rel='stylesheet'/>
+    <style>
+        body{
+            max-width: 1250px;
+            margin: auto;
+        }
+        .h1{
+            /*padding: 20px;*/
+            /*background: #53b778;*/
+            color: #53b778;
+            display: block;
+            letter-spacing: 2px;
+            line-height: 50px;
+            font-size: 30px;
+            margin-bottom: 10px;
+            border-bottom: 1px #53b778 solid;
+            margin-top: 50px;
+        }
+        .desc{
+            line-height: 30px;
+            font-size: 25px;
+            letter-spacing: 2px;
+            opacity: 0.8;
+        }
+        pre{
+            font-size: 20px;
+            background: #f5f5f5;
+            padding: 20px;
+            line-height: 25px;
+            letter-spacing: 1px;
+            color: #000;
+            border: 1px #cccccc solid;
+        }
+        .div {
+            width          : 80px;
+            height         : 80px;
+            line-height    : 80px;
+            vertical-align : middle;
+            text-align     : center;
+            background     : orange;
+            border-radius  : 80px;
+            float          : left;
+            margin         : 40px;
+            color          : #fff;
+            font-size      : 40px;
+        }
+
+
+        .wobble{
+            animation: wobble 5s;
+            width          : 80px;
+            height         : 80px;
+            line-height    : 80px;
+            background     : red;
+            border-radius  : 80px;
+            color          : #fff;
+            font-size      : 40px;
+            margin: 0;
+        }
+        @keyframes wobble {
+            0% {
+                margin-left: 100px;
+                background: green;
+            }
+            40% {
+                margin-left: 300px;
+                background: orange;
+            }
+            60% {
+                margin-left: 50px;
+                background: blue;
+            }
+            100% {
+                margin-left: 100px;
+                background: red;
+            }
+        }
+
+
+
+        .mix{
+            animation-name: rotate;
+            animation-duration: 1s;
+            animation-timing-function:cubic-bezier(0.4,0.1,0.5,1);
+            animation-delay:0.1s;
+            animation-iteration-count:2;/*播放动画的循环次数,默认为1,infinite为无限次数循环*/
+            animation-direction:alternate;/*只有两个值，默认值为normal[每次循环都是向前播放]另一个值是alternate[动画播放在第偶数次向前播放，第奇数次向反方向播放]*/
+            animation-play-state:running;/*两个值，running和paused*/
+            /*
+            none	不改变默认行为。
+            forwards	当动画完成后，保持最后一个属性值（在最后一个关键帧中定义）。
+            backwards	在 animation-delay 所指定的一段时间内，在动画显示之前，应用开始属性值（在第一个关键帧中定义）。
+            both	向前和向后填充模式都被应用。
+            */
+            animation-fill-mode:both;
+            /*animation: name duration timing-function delay iteration-count direction;*/
+            /*animation: rotate 1s cubic-bezier(0.4,0.1,0.5,1) 0.1s infinite alternate;*/
+        }
+
+        .forwards{
+            animation-name: rotate;
+            animation-duration: 1s;
+            animation-timing-function:cubic-bezier(0.4,0.1,0.5,1);
+            animation-fill-mode:forwards;
+        }
+
+        @keyframes rotate {
+            0% {
+                transform : rotate(0deg);
+            }
+            50% {
+                background: #f00;
+                transform : rotate(180deg);
+            }
+            80%{
+                transform :translate(100px)
+            }
+            100% {
+                background: #000;
+                transform : rotate(270deg);
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="h1 align_center">
+    <b>动画:animation</b>
+</div>
+<div class="h1">
+    animation: name duration timing-function delay iteration-count direction;
+</div>
+<p class="desc">
+    使用方法:<pre>
+.box{
+    animation: rotate 1s cubic-bezier(0.4,0.1,0.5,1) 0.1s infinite alternate;
+}
+@keyframes rotate {
+ from {
+   Properties:Properties value;
+ }
+ Percentage {
+   Properties:Properties value;
+ }
+ to {
+   Properties:Properties value;
+ }
+}
+或者全部写成百分比的形式：
+@keyframes rotate {
+  0% {
+     Properties: value;
+  }
+  Percentage {
+     Properties: value;
+  }
+  100% {
+     Properties: value;
+  }
+}
+
+</pre>
+<br/>
+描述:animation作用于dom元素上，可以制作一些简单的真实意义上动画<br/><br/>
+特点:可以定义多个关键帧,可以事件触发也可以不需要事件触发<br/><br/>
+本质:是通过不同时间点的css属性覆盖达到视觉的变化效果，动画运行完恢复默认属性
+</p>
+<div class="clearfix" style="padding: 30px 0px;border: 1px  #d2d2d2 solid">
+    <div class="wobble"></div>
+</div>
+<pre>
+&lt;div class="wobble"></div>
+
+.wobble{
+    animation: wobble 5s;
+    width          : 80px;
+    height         : 80px;
+    background     : red;
+    border-radius  : 40px;
+    margin: 0;
+}
+@keyframes wobble {
+    0% {
+        margin-left: 100px;
+        background: green;
+    }
+    40% {
+        margin-left: 150px;
+        background: orange;
+    }
+    60% {
+        margin-left: 75px;
+        background: blue;
+    }
+    100% {
+        margin-left: 100px;
+        background: red;
+    }
+}
+</pre>
+<div>
+    <img src="img/keyframes.png"/>
+</div>
+<br/><br/>
+<div class="clearfix" style="padding: 30px 0px;border: 1px  #d2d2d2 solid">
+    <div id="mix" class="div">
+        <i class="fa fa-check"></i>
+    </div>
+</div>
+<pre>
+&lt;div id="mix" class="div">
+    &lt;i class="fa fa-check"></i>
+&lt;/div>
+.mix{
+    animation-name: rotate;
+    animation-duration: 1s;
+    animation-iteration-count:2;/*播放动画的循环次数,默认为1,infinite为无限次数循环*/
+    animation-direction:alternate;/*只有两个值，默认值为normal[每次循环都是向前播放]另一个值是alternate[动画播放在第偶数次向前播放，第奇数次向反方向播放]*/
+}
+
+@keyframes rotate {
+    0% {
+        transform : rotate(0deg);
+    }
+    50% {
+        background: #f00;
+        transform : rotate(180deg);
+    }
+    80%{
+        transform :translate(100px)
+    }
+    100% {
+        background: #000;
+        transform : rotate(270deg);
+    }
+}
+
+
+$('#mix').click(function(){
+$(this).toggleClass('mix');
+});
+</pre>
+<div class="clearfix"></div>
+
+
+<div class="h1">
+    animation-name:none|keyframes;
+</div>
+<p class="desc">
+<pre>
+animation-name: none | IDENT[,none | IDENT]*;
+</pre>
+<br/>
+描述:是用来定义一个动画的名称，其主要有两个值：IDENT是由Keyframes创建的动画名；none为默认值，当值为none时，将没有任何动画效果。
+</p>
+
+<div class="h1">
+    animation-duration:0|5s;
+</div>
+<p class="desc">
+<pre>
+animation-duration:
+</pre>
+<br/>
+描述:单位为s （秒.）其默认值为“0”
+</p>
+
+<div class="h1">
+    animation-timing-function:
+</div>
+<p class="desc">
+<pre>
+animation-timing-function:ease | linear | ease-in | ease-out | ease-in-out | cubic-bezier(x1,y1,x2,y2)];
+animation-timing-function:cubic-bezier(0.4,0.1,0.5,1);
+</pre>
+<br/>
+描述：和transition-timing-function一样
+</p>
+<div class="h1">
+    animation-delay:5s;
+</div>
+
+
+<div class="h1">
+    animation-iteration-count
+</div>
+<p class="desc">
+<pre>
+/*播放动画的循环次数,默认为1,infinite为无限次数循环*/
+animation-iteration-count:2;
+</pre>
+<br/>
+</p>
+
+
+<div class="h1">
+    animation-direction
+</div>
+<p class="desc">
+<pre>
+/*指定元素动画播放的方向，其只有两个值，默认值为normal，如果设置为normal时，动画的每次循环都是向前播放；另一个值是alternate，他的作用是，动画播放在第偶数次向前播放，第奇数次向反方向播放*/
+animation-direction:alternate;
+</pre>
+<br/>
+</p>
+
+
+<div class="h1">
+    animation-fill-mode
+</div>
+<p class="desc">
+<pre>
+animation-fill-mode:forwards;
+
+none	    不改变默认行为。
+forwards    当动画完成后，保持最后一个属性值（在最后一个关键帧中定义）。
+backwards   在 animation-delay 所指定的一段时间内，在动画显示之前，应用开始属性值（在第一个关键帧中定义）。
+both	    向前和向后填充模式都被应用。
+</pre>
+<br/>
+</p>
+<div class="clearfix">
+<div class="div forwards"></div>
+</div>
+
+
+
+<div class="h1">
+    js监控
+</div>
+<p class="desc">
+    使用方法:
+<pre>
+//    W3c标准：animationstart animationiteration animationend
+//
+//    Webkit：webkitAnimationStart webkitAnimationIteration webkitAnimationEnd
+//
+//    Firefox：animationstart animationiteration animationend
+//
+//    Opera：animationstart animationiteration animationend
+//
+//    IE10：MSAnimationStart MSAnimationIteration MSAnimationEnd
+
+        $("#mix").one("webkitAnimationStart",function(){
+            console.log('webkitAnimationStart');
+        }).one("webkitAnimationIteration",function(){
+            console.log('webkitAnimationIteration');
+        }).one("webkitAnimationEnd",function(){
+            console.log('webkitAnimationEnd');
+        });
+</pre>
+<br/>
+</p>
+</body>
+</html>
+<script>
+//    W3c标准：animationstart animationiteration animationend
+//
+//    Webkit：webkitAnimationStart webkitAnimationIteration webkitAnimationEnd
+//
+//    Firefox：animationstart animationiteration animationend
+//
+//    Opera：animationstart animationiteration animationend
+//
+//    IE10：MSAnimationStart MSAnimationIteration MSAnimationEnd
+    $(document).ready(function(){
+        $("#mix").one("webkitAnimationStart",function(){
+            console.log('webkitAnimationStart');
+        }).one("webkitAnimationIteration",function(){
+            console.log('webkitAnimationIteration,animation-iteration-count 属性设置为 "1", 动画将只播放一次， animationiteration 事件不再触发。');
+        }).one("webkitAnimationEnd",function(){
+            console.log('webkitAnimationEnd');
+        });
+
+        $('#mix').click(function(){
+            $(this).toggleClass('mix');
+        });
+
+
+
+
+    });
+</script>

@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>transform 2D</title>
+    <script src="jquery.js"></script>
+    <script src="prefixfree.min.js"></script>
+    <link href='../resource/css/font-awesome.css' rel='stylesheet'/>
+    <link href='../resource/css/common.css' rel='stylesheet'/>
+    <style>
+        body{
+            max-width: 1250px;
+            margin: auto;
+        }
+        .h1{
+            /*padding: 20px;*/
+            /*background: #53b778;*/
+            color: #53b778;
+            display: block;
+            letter-spacing: 2px;
+            line-height: 50px;
+            font-size: 30px;
+            margin-bottom: 10px;
+            border-bottom: 1px #53b778 solid;
+            margin-top: 50px;
+        }
+        .desc{
+            line-height: 30px;
+            font-size: 25px;
+            letter-spacing: 2px;
+            opacity: 0.8;
+        }
+        pre{
+            font-size: 20px;
+            background: #f5f5f5;
+            padding: 20px;
+            line-height: 25px;
+            letter-spacing: 1px;
+            color: #000;
+            border: 1px #cccccc solid;
+        }
+        .translate_div,.scale_div,.rotate_div,.skew_div,.matrix_div{
+            position: relative;
+            text-align: center;
+            background: url("img/card_bg.png") center no-repeat,url("img/xy.png") center no-repeat;
+            width: 500px;
+            height: 500px;
+            margin: auto;
+            margin-top: 50px;
+        }
+        .rotate_div{
+            background: url("img/card_bg.png") center no-repeat,url("img/xydeg.png") center no-repeat;
+        }
+        .img{
+            position : absolute;
+            top: 176px;
+            left: 200px;
+        }
+
+        .translate1{
+            /*把元素从原来的位置移动，而不影响在X、Y轴上任何组件*/
+            transform: translate(150px,-170px);
+        }
+        .translate2{
+            transform: translate(150px,170px);
+        }
+        .translate3{
+            transform: translate(-150px,-170px);
+        }
+        .translate4{
+            transform: translate(-150px,170px);
+        }
+
+
+        .scale1{
+            transform: scale(2);
+            opacity: 0.5;
+        }
+        .scale2{
+            transform: scale(.8);
+            opacity: 0.7;
+        }
+        .scale3{
+            transform: scale(.5,0.2);
+            opacity: 0.5;
+        }
+        .scale4{
+            transform: scale(0.2,0.5);
+        }
+        .scale5{
+            transform: scale(-2);
+            opacity: 0.5;
+        }
+        .scale6{
+            transform: scale(-0.2,-0.5);
+            opacity: 0.8;
+        }
+
+
+
+        .rotate1{
+            transform: rotate(60deg) scale(2);
+        }
+        .rotate2{
+            transform: rotate(-60deg);
+        }
+        .rotate3{
+            transform: rotate(70deg);
+            transform-origin: 0 0;
+        }
+        .rotate4{
+            transform: rotate(70deg);
+            transform-origin: bottom right;
+        }
+
+
+
+        .skew1 {
+            transform : skew(60deg);
+        }
+        .skew2{
+            transform: skew(-60deg);
+        }
+        .skew3{
+            transform: skew(0deg,60deg);
+        }
+        .skew4{
+            transform: skew(0deg,-60deg);
+        }
+        .skew5{
+            transform: skew(60deg);
+            transform-origin:  0 0;
+        }
+        .skew6{
+            transform: skew(60deg);
+            transform-origin:  bottom right;
+        }
+
+        .matrix{
+            transform: matrix(0.05,0.8,0.8,0.6,0,0);
+            /*matrix((1-k^2)/(1+k^2),2k / (1 + k^2),2k/(1+k^2),(k^2-1)/(1+k^2),0,0)*/
+        }
+
+
+    </style>
+</head>
+<body>
+<div class="h1 align_center">
+    <b>transform 2D变换</b>［位移、缩放、旋转、倾斜］
+</div>
+    <div class="h1">
+        A . 位移:translate()
+    </div>
+    <p class="desc">
+    使用方法:<pre>transform : translate(50px,50px);</pre>
+    <br/>
+    描述:把元素从原来的位置移动，而不影响文档流，和relative比较类似
+    </p>
+    <div class="align_center">
+        <img src="img/transform-29.jpg"/>
+    </div>
+    <div class="translate_div">
+        <!--<img src="img/card.png" class="img translate1"/>-->
+        <img src="img/card.png" class="img translate2"/>
+        <img src="img/card.png" class="img translate3"/>
+        <!--<img src="img/card.png" class="img translate4"/>-->
+    </div>
+    <br/>
+<pre>
+transform: translate(150px,170px);
+transform: translate(-150px,-170px);
+translateX() === translate(x)
+translateY() === translate(0,y)
+</pre>
+
+    <div class="h1">
+        B . 缩放:scale()
+    </div>
+    <p class="desc">
+        使用方法:<pre>transform : scale(0.1,0.2);</pre>
+        <br/>
+        描述:让元素根据中心原点对对象进行缩放;默认的值1。小于1缩小，大于1放大。如果只有一个值时，其第二个值默认与第一个值相等。负值则为对称.
+    </p>
+    <div class="scale_div">
+        <img src="img/card.png" class="img scale1"/>
+        <!--<img src="img/card.png" class="img scale2"/>-->
+        <!--<img src="img/card.png" class="img scale3"/>-->
+        <img src="img/card.png" class="img scale4"/>
+    </div>
+    <div class="scale_div">
+        <img src="img/card.png" class="img scale5"/>
+        <img src="img/card.png" class="img scale6"/>
+    </div>
+<pre>
+transform: scale(2);
+transform: scale(0.2,0.5);
+
+transform: scale(-2);
+transform: scale(-0.2,-0.5);
+</pre>
+
+    <div class="h1">
+        C . 旋转rotate()
+    </div>
+    <p class="desc">
+        使用方法:<pre>transform : rotate(60deg);</pre>
+    <br/>
+    描述:旋转rotate()函数通过指定的角度参数对元素根据对象原点指定一个2D旋转。它主要在二维空间内进行操作，接受一个角度值，用来指定旋转的幅度。如果这个值为正值，元素相对原点中心顺时针旋转；如果这个值为负值，元素相对原点中心逆时针旋转。
+    </p>
+    <div class="rotate_div">
+        <img src="img/card.png" class="img rotate1"/>
+        <img src="img/card.png" class="img rotate2"/>
+    </div>
+    <div class="rotate_div">
+        <img src="img/card.png" class="img rotate3"/>
+        <img src="img/card.png" class="img rotate4"/>
+    </div>
+<pre>
+transform: rotate(60deg) scale(2);
+transform: rotate(-60deg);
+
+transform: rotate(70deg);
+transform-origin: 0 0;
+
+transform: rotate(70deg);
+transform-origin: bottom right;
+</pre>
+
+    <div class="h1">
+        D . 倾斜skew()
+    </div>
+    <p class="desc">
+        使用方法:<pre>transform : skew(60deg，30deg);</pre>
+    <br/>
+    描述:让元素倾斜显示；它可以将一个对象以其中心位置围绕着X轴和Y轴按照一定的角度倾斜。这与rotate()函数的旋转不同，rotate()函数只是旋转，而不会改变元素的形状。skew()函数不会旋转，而只会改变元素的形状
+    </p>
+
+    <div class="skew_div">
+        <img src="img/card.png" class="img skew1"/>
+        <!--<img src="img/card.png" class="img skew2"/>-->
+        <!--<img src="img/card.png" class="img skew3"/>-->
+        <img src="img/card.png" class="img skew4"/>
+    </div>
+<div class="clearfix"></div>
+<pre>
+transform : skew(60deg);
+transform: skew(0deg,-60deg);
+</pre>
+    <div class="skew_div">
+        <img src="img/card.png" class="img skew5"/>
+        <img src="img/card.png" class="img skew6"/>
+    </div>
+<pre>
+transform: skew(60deg);
+transform-origin:  0 0;
+
+transform: skew(60deg);
+transform-origin:  bottom right;
+</pre>
+
+    <div class="h1">
+        E . 变换矩阵matrix()
+    </div>
+    <p class="desc">
+        使用方法:<pre>transform : matrix(a,b,c,d,e,f);</pre>
+    <br/>
+    </p>
+<div>
+    <div class="align_center">
+    <img src="img/transform-48.jpg"/>
+    <br/><br/>
+    </div>
+<pre>
+平移:transform: matrix(1, 0, 0, 1, 30, 30);
+缩放:transform: matrix(sx, 0, 0, sy, 0, 0);
+旋转:transform: matrix(cosθ,sinθ,-sinθ,cosθ,0,0);
+斜切:transform: matrix(1,tan(θy),tan(θx),1,0,0);/*θy为和Y轴夹角，θx为和X轴夹角*/
+</pre>
+
+    <br/>
+    <img src="img/matrix/scale-2d.png" width="100%"/>
+    <img src="img/matrix/skew-x-2d.png" width="100%"/>
+    <img src="img/matrix/skew-y-2d.png" width="100%"/>
+    <img src="img/matrix/rotate-2d.png" width="100%"/>
+    <img src="img/matrix/rotate-from.png" width="100%"/>
+    <img src="img/matrix/translate-2d.png" width="100%"/>
+</div>
+
+<!--<div class="matrix_div">-->
+    <!--<!--<img src="img/card.png" class="img matrix"/>-->-->
+<!--</div>-->
+</body>
+</html>

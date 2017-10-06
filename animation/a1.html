@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html"
+      xmlns="http://www.w3.org/1999/html">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>transition</title>
+    <script src="jquery.js"></script>
+    <script src="prefixfree.min.js"></script>
+    <link href='../resource/css/font-awesome.css' rel='stylesheet'/>
+    <link href='../resource/css/common.css' rel='stylesheet'/>
+    <style>
+        body{
+            max-width: 1250px;
+            margin: auto;
+        }
+        .h1{
+            /*padding: 20px;*/
+            /*background: #53b778;*/
+            color: #53b778;
+            display: block;
+            letter-spacing: 2px;
+            line-height: 50px;
+            font-size: 30px;
+            margin-bottom: 10px;
+            border-bottom: 1px #53b778 solid;
+            margin-top: 50px;
+        }
+        .desc{
+            line-height: 30px;
+            font-size: 25px;
+            letter-spacing: 2px;
+            opacity: 0.8;
+        }
+        pre{
+            font-size: 20px;
+            background: #f5f5f5;
+            padding: 20px;
+            line-height: 25px;
+            letter-spacing: 1px;
+            color: #000;
+            border: 1px #cccccc solid;
+        }
+        .div {
+            width          : 80px;
+            height         : 80px;
+            line-height    : 80px;
+            vertical-align : middle;
+            text-align     : center;
+            background     : orange;
+            border-radius  : 80px;
+            float          : left;
+            margin         : 40px;
+            color          : #fff;
+            font-size      : 40px;
+        }
+
+        .rotate {
+            background-color : #55acee;
+        }
+
+        .move {
+            background-color : #3a5795;
+        }
+
+        .mix{
+            /*动画变化的属性，取值可［单个属性］，［多个属性，以逗号分开］，[all指定所有属性]*/
+            transition-property: width,height,background-color,border,line-height;
+            /*过渡效果需要花费的时间*/
+            transition-duration: 0.4s;
+            /*定义过渡效果何时开始*/
+            transition-delay:0.1s;
+
+            /*属性规定过渡效果的速度曲线:允许过渡效果随着时间来改变其速度,开始和结束的速度曲线相反*/
+            /*
+            transition-timing-function:linear|ease|ease-in|ease-out|ease-in-out|cubic-bezier(n,n,n,n);
+            linear	规定以相同速度开始至结束的过渡效果（等于 cubic-bezier(0,0,1,1)）。
+            ease	规定慢速开始，然后变快，然后慢速结束的过渡效果（cubic-bezier(0.25,0.1,0.25,1)）。
+            ease-in	规定以慢速开始的过渡效果（等于 cubic-bezier(0.42,0,1,1)）。
+            ease-out	规定以慢速结束的过渡效果（等于 cubic-bezier(0,0,0.58,1)）。
+            ease-in-out	规定以慢速开始和结束的过渡效果（等于 cubic-bezier(0.42,0,0.58,1)）。
+            cubic-bezier(n,n,n,n)	在 cubic-bezier 函数中定义自己的值。可能的值是 0 至 1 之间的数值。
+            生硬的过度:cubic-bezier(0.9,0.1,0.9,1)
+            */
+            transition-timing-function:cubic-bezier(0.4,0.1,0.5,1) ;
+
+            /*transition: all 0.4s cubic-bezier(0.4,0.1,0.5,1) 0.1s;*/
+        }
+        .mix:hover{
+            width          : 150px;
+            height         : 150px;
+            line-height    : 150px;
+            background     : #f8b9b7;
+            float          : left;
+            margin         : 40px;
+        }
+        .mix1,.mix2,.mix3,.mix4,.mix5,.mix6{
+            width: 150px;
+            height: 30px;
+            line-height: 30px;
+            vertical-align: middle;
+            color: #fff;
+            transition-property:width;
+            transition-duration: 1s;
+            background: #ff7d27;
+            border-radius: 5px;
+            padding-left: 10px;
+        }
+        .mix1{
+            transition-timing-function:linear;
+        }
+        .mix2{
+            transition-timing-function:ease;
+        }
+        .mix3{
+            transition-timing-function:ease-in;
+        }
+        .mix4{
+            transition-timing-function:ease-out;
+        }
+        .mix5{
+            transition-timing-function:ease-in-out;
+        }
+        .mix6{
+            width: 200px;
+            transition-timing-function:cubic-bezier(0.9,0.1,0.9,1);
+        }
+        .mix7{
+            width: 150px;
+            height: 30px;
+            line-height: 30px;
+            vertical-align: middle;
+            color: #fff;
+            background: #ff7d27;
+            border-radius: 5px;
+            padding-left: 10px;
+        }
+        .mix1:hover,.mix2:hover,.mix3:hover,.mix4:hover,.mix5:hover,.mix6:hover,.mix7:hover{
+            width: 600px;
+        }
+
+        .zoom {
+            background-color : #BD080C;
+        }
+
+        .zoom {
+            transition : All 0.4s ease-in-out;
+        }
+
+        .zoom:hover {
+            transform : scale(1.2);
+        }
+
+        .rotate {
+            transition : All 0.4s ease-in-out;
+        }
+
+        .rotate:hover {
+            transform : rotate(360deg);
+        }
+
+        .rotate-zoom {
+            transition : All 0.4s ease-in-out;
+        }
+
+        .rotate-zoom:hover {
+            transform : rotate(360deg) scale(1.2);
+        }
+
+        .move {
+            transition : All 0.4s ease-in-out;
+        }
+
+        .move:hover {
+            transform : translate(0, -10px);
+        }
+
+    </style>
+</head>
+<body>
+<div class="h1 align_center">
+    <b>过度:transition</b>
+</div>
+<p class="desc">
+    使用方法:<pre>
+transition: all 0.4s cubic-bezier(0.4,0.1,0.5,1) 0.1s;
+&lt;transition-property> &lt;transition-duration> &lt;transition-timing-function> &lt;transition-delay>
+</pre>
+<br/>
+描述:CSS的transition允许CSS的属性值在一定的时间区间内平滑地过渡。这种效果可以在鼠标单击、获得焦点、被点击或对元素任何改变中触发，并圆滑地以动画效果改变CSS的属性值。<br/><br/>
+特点:只有开始状态和结束状态2个关键帧,需要触发一个事件(hover事件或click事件等)才会随时间改变其css属性.
+</p>
+<div id="mix" class="div mix">
+    <div class="animate-wrap">
+        <i class="fa fa-check"></i>
+    </div>
+</div>
+<div class="clearfix"></div>
+
+
+<div class="h1">
+    transition-property();
+</div>
+<p class="desc">
+<pre>
+/*动画变化的属性，取值可［单个属性］，［多个属性，以逗号分开］，[all指定所有属性]*/
+transition-property: width,height,background-color,border,line-height;
+</pre>
+<br/>
+</p>
+
+
+<div class="h1">
+    transition- duration:;
+</div>
+<p class="desc">
+<pre>
+/*过渡效果需要花费的时间*/
+transition-duration: 0.4s;
+</pre>
+<br/>
+</p>
+
+
+<div class="h1">
+    transition-delay:;
+</div>
+<p class="desc">
+<pre>
+/*定义过渡效果何时开始*,延迟的时间/
+transition-delay:0.1s;
+</pre>
+<br/>
+</p>
+
+<div class="h1">
+    transition-timing-function:
+</div>
+<p class="desc">
+<pre>
+/*属性规定过渡效果的速度曲线:允许过渡效果随着时间来改变其速度,开始和结束的速度曲线相反*/
+transition-timing-function:linear|ease|ease-in|ease-out|ease-in-out|cubic-bezier(n,n,n,n);
+
+linear	                规定以相同速度开始至结束的过渡效果（等于 cubic-bezier(0,0,1,1)）。
+ease	                规定慢速开始，然后变快，然后慢速结束的过渡效果（cubic-bezier(0.25,0.1,0.25,1)）。
+ease-in	                规定以慢速开始的过渡效果（等于 cubic-bezier(0.42,0,1,1)）。
+ease-out	         规定以慢速结束的过渡效果（等于 cubic-bezier(0,0,0.58,1)）。
+ease-in-out	         规定以慢速开始和结束的过渡效果（等于 cubic-bezier(0.42,0,0.58,1)）。
+cubic-bezier(n,n,n,n)	在 cubic-bezier 函数中定义自己的值。可能的值是 0 至 1 之间的数值。
+</pre>
+<br/>
+描述:本质是定义加速度
+</p>
+<div class="align_center">
+    <img src="img/bezier.png"/><br/>
+    <img src="img/bezierdemo.png" width="500"/>
+</div>
+<div>
+    <div class="mix1">linear</div><br/>
+    <div class="mix2">ease</div><br/>
+    <div class="mix3">ease-in</div><br/>
+    <div class="mix4">ease-out</div><br/>
+    <div class="mix5">ease-in-out</div><br/>
+    <div class="mix6">cubic-bezier(0.9,0.1,0.9,1)</div><br/>
+    <div class="mix7">none</div><br/>
+</div>
+<pre>
+.mix1,.mix2,.mix3,.mix4,.mix5,.mix6{
+    width: 150px;
+    height: 30px;
+    line-height: 30px;
+    vertical-align: middle;
+    color: #fff;
+    transition-property:width;
+    transition-duration: 1s;
+    background: #ff7d27;
+    border-radius: 5px;
+    padding-left: 10px;
+}
+.mix1{
+    transition-timing-function:linear;
+}
+.mix2{
+    transition-timing-function:ease;
+}
+.mix3{
+    transition-timing-function:ease-in;
+}
+.mix4{
+    transition-timing-function:ease-out;
+}
+.mix5{
+    transition-timing-function:ease-in-out;
+}
+.mix6{
+    width: 200px;
+    transition-timing-function:cubic-bezier(0.9,0.1,0.9,1);
+}
+.mix7{
+    width: 150px;
+    height: 30px;
+    line-height: 30px;
+    vertical-align: middle;
+    color: #fff;
+    background: #ff7d27;
+    border-radius: 5px;
+    padding-left: 10px;
+}
+.mix1:hover,.mix2:hover,.mix3:hover,.mix4:hover,.mix5:hover,.mix6:hover,.mix7:hover{
+    width: 600px;
+}
+</pre>
+
+<div class="div rotate">
+    <div class="animate-wrap">
+        <i class="fa fa-check"></i>
+    </div>
+</div>
+<div class="div move">
+    <div class="animate-wrap">
+        <i class="fa fa-check"></i>
+    </div>
+</div>
+
+<div class="div zoom">
+    <div class="animate-wrap">
+        <i class="fa fa-check"></i>
+    </div>
+</div>
+
+
+<div class="div rotate-zoom">
+    <div class="animate-wrap">
+        <i class="fa fa-check"></i>
+    </div>
+</div>
+<div class="clearfix"></div>
+<p class="desc">
+<pre>
+/*放大、旋转*/
+transform : rotate(360deg) scale(1.2);
+</pre>
+<br/>
+</p>
+
+<div class="h1">
+    js监控
+</div>
+<p class="desc">
+    使用方法:
+<pre>
+//    Chrome:webkitTransitionEnd
+//    Opera:10.5->oTransitionEnd,12->otransitionend,12.10->transitionend
+//    Safari:webkitTransitionEnd
+//    Android: webkitTransitionEnd
+//    Opera Mobile:10->oTransitionEnd,12->otransitionend,12.10->transitionend
+//    Safari Mobile:webkitTransitionEnd
+
+    $("#mix").one("webkitTransitionEnd",function(){
+        console.log('webkitTransitionEnd');
+    });
+</pre>
+<br/>
+</p>
+
+</body>
+</html>
+<script>
+//    Chrome:webkitTransitionEnd
+//    Opera:10.5->oTransitionEnd,12->otransitionend,12.10->transitionend
+//    Safari:webkitTransitionEnd
+//    Android: webkitTransitionEnd
+//    Opera Mobile:10->oTransitionEnd,12->otransitionend,12.10->transitionend
+//    Safari Mobile:webkitTransitionEnd
+    $(document).ready(function(){
+        $("#mix").one("webkitTransitionEnd",function(e){
+            var propertyName = e.propertyName || e.originalEvent.propertyName;
+            console.log(propertyName);
+        });
+    });
+</script>

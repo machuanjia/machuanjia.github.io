@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .item{
+            position: absolute;
+            width: 120px;/*最外面框框大小*/
+            height: 120px;/*最外面框框大小*/
+            border-top: 2px blue solid;
+            border-radius: 60px;/*最外面框框圆角*/
+            top:40px;/*200-宽度/2*/
+            left: 40px;/*200-高度/2*/
+        }
+        .item2{
+            position: absolute;
+            width: 110px;/*中间框框大小*/
+            height: 110px;/*中间框框大小*/
+            border-top: 2px yellow solid;
+            border-radius: 55px;/*中间框框圆角*/
+            top:45px;/*200-宽度/2*/
+            left: 45px;/*200-高度/2*/
+        }
+        .item3{
+            position: absolute;
+            width: 100px;/*里面框框大小*/
+            height: 100px;/*里面框框大小*/
+            border-top: 2px red solid;
+            border-radius: 50px;/*里面框框圆角*/
+            top:50px;/*200-宽度/2*/
+            left: 50px;/*200-宽度/2*/
+        }
+        .mix{
+            animation-name: rotate;
+            animation-duration: 0.5s;/*最外面框框转一周要的时间*/
+            animation-iteration-count:infinite;
+            animation-direction:normal;
+        }
+        .mix2{
+            animation-name: rotate;
+            animation-duration: 0.8s;/*中间框框转一周要的时间*/
+            animation-iteration-count:infinite;
+            animation-direction:normal;
+        }
+        .mix3{
+            animation-name: rotate;
+            animation-duration: 1s;/*里面框框转一周要的时间*/
+            animation-iteration-count:infinite;
+            animation-direction:normal;
+        }
+
+        @keyframes rotate {
+            0% {
+                transform : rotate(0deg);/*最外面框框旋转一周的百分比时旋转的角度*/
+            }
+            25% {
+                transform : rotate(90deg);
+            }
+            50%{
+                transform :rotate(180deg)
+            }
+            75% {
+                transform : rotate(270deg);
+            }
+            100% {
+                transform : rotate(360deg);
+            }
+        }
+        @keyframes rotate2 {
+            0% {
+                transform : rotate(0deg);/*中间框框旋转一周的百分比时旋转的角度*/
+            }
+            30% {
+                transform : rotate(90deg);
+            }
+            60%{
+                transform :rotate(180deg)
+            }
+            85% {
+                transform : rotate(270deg);
+            }
+            100% {
+                transform : rotate(360deg);
+            }
+        }
+        @keyframes rotate3 {
+            0% {
+                transform : rotate(0deg);/*里面框框旋转一周的百分比时旋转的角度*/
+            }
+            40% {
+                transform : rotate(90deg);
+            }
+            75%{
+                transform :rotate(180deg)
+            }
+            90% {
+                transform : rotate(270deg);
+            }
+            100% {
+                transform : rotate(360deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="loading">
+        <div class="item mix"></div>
+        <div class="item2 mix2"></div>
+        <div class="item3 mix3"></div>
+    </div>
+</body>
+</html>

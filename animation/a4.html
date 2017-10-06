@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>transform3D</title>
+    <script src="jquery.js"></script>
+    <script src="prefixfree.min.js"></script>
+    <link href='../resource/css/font-awesome.css' rel='stylesheet'/>
+    <link href='../resource/css/common.css' rel='stylesheet'/>
+    <style>
+        body{
+            max-width: 1250px;
+            margin: auto;
+        }
+        .h1{
+            /*padding: 20px;*/
+            /*background: #53b778;*/
+            color: #53b778;
+            display: block;
+            letter-spacing: 2px;
+            line-height: 50px;
+            font-size: 30px;
+            margin-bottom: 10px;
+            border-bottom: 1px #53b778 solid;
+            margin-top: 50px;
+        }
+        .desc{
+            line-height: 30px;
+            font-size: 25px;
+            letter-spacing: 2px;
+            opacity: 0.8;
+        }
+        pre{
+            font-size: 20px;
+            background: #f5f5f5;
+            padding: 20px;
+            line-height: 25px;
+            letter-spacing: 1px;
+            color: #000;
+            border: 1px #cccccc solid;
+        }
+        .translate_div,.scale_div,.rotate_div,.skew_div,.matrix_div{
+            position: relative;
+            text-align: center;
+            background: url("img/card_bg.png") center no-repeat,url("img/xy.png") center no-repeat;
+            width: 500px;
+            height: 500px;
+            margin: auto;
+            margin-top: 50px;
+            transform-style: preserve-3d;
+            /*perspective:200px*/
+        }
+        .rotate_div{
+            background: url("img/card_bg.png") center no-repeat,url("img/xydeg.png") center no-repeat;
+        }
+        .img{
+            position : absolute;
+            top: 176px;
+            left: 200px;
+        }
+
+        .translate1{
+            transform: translate3d(100px,100px,100px);
+        }
+
+
+        .scale1{
+            transform: scaleZ(2) rotateX(45deg);
+            top: 176px;
+            left: 50px;
+        }
+        .scale2{
+            transform: scaleZ(2) rotateY(45deg);
+            top: 176px;
+            left: 300px;
+        }
+        .scale3{
+            transform: scale3d(0.5,0.5,2) rotateX(45deg);
+        }
+
+
+
+        .rotate1{
+            transform: rotateX(60deg);
+            top: 176px;
+            left: 50px;
+        }
+        .rotate2{
+            transform: rotateY(60deg);
+            top: 176px;
+            left: 300px;
+        }
+        .rotate3{
+            transform: rotateZ(60deg);
+        }
+
+
+        .con {
+            display: block;
+            width: 1400px;
+            height: 130px;
+            margin-bottom: 50px;
+            border: 1px solid #bbb;
+        }
+        .box {
+            width: 100px;
+            height: 100px;
+            opacity: .75;
+            float: left;
+            margin-left: 20px;
+        }
+
+        #darkred .box {
+            background-color: darkred;
+            transform: perspective(500px) rotateY(45deg);
+        }
+
+        #darkblue {
+            perspective: 500px;
+        }
+        .perspective-origin {
+            perspective-origin: 0 0;
+        }
+        #darkblue .box {
+            background-color: darkblue;
+            transform: rotateY(45deg);
+        }
+
+
+
+
+
+        .stage_area {
+            width: 900px;
+            min-height: 100px;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 100px 50px;
+            perspective: 500px;
+            position: relative;
+        }
+
+        .container {
+            width: 128px;
+            height: 100px;
+            margin-left: -64px;
+            transition: transform 1s;
+            transform-style: preserve-3d;
+            position: absolute;
+            left: 50%;
+            border: 1px #f00 solid;
+        }
+
+        .piece {
+            width: 128px;
+            box-shadow: 0 1px 3px rgba(0,0,0,.5);
+            transition: opacity 1s, transform 1s;
+            position: absolute;
+            bottom: 0;
+            -webkit-backface-visibility: visible;
+        }
+
+
+
+
+
+
+
+        .matrix3d-scale{
+            transform: matrix3d(2, 0, 0, 0, 0, 2, 0, 0, 0, 0, 2, 0, 0, 0, 0, 1);
+        }
+        .matrix3d-skew-x-y{
+            transform: matrix3d(1, 0, 0, 0, 2, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+        }
+        .matrix3d-skew-x-z{
+            transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 200, 0, 1, 0, 0, 0, 0, 1);
+        }
+        .matrix3d-skew-y-x{
+            transform: matrix3d(1, 2, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+        }
+        .matrix3d-skew-y-z{
+            transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 2, 1, 0, 0, 0, 0, 1);
+        }
+        .matrix3d-skew-z-x{
+            transform: matrix3d(1, 0, 2, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+        }
+        .matrix3d-skew-z-y{
+            transform: matrix3d(1, 0, 0, 0, 0, 1, 2, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+        }
+
+
+
+
+
+
+
+    </style>
+</head>
+<body>
+<div class="h1 align_center">
+    <b>transform 3D变换</b>[位移、缩放、旋转]
+</div>
+<div class="clear"></div>
+<pre>
+    transform-style: flat | preserve-3d;//设置在父元素
+</pre>
+
+
+
+<div class="clearfix align_center">
+    <img src="img/xyz.png"/>
+</div>
+<div class="clear"></div>
+
+
+<div class="h1">
+    A . 旋转rotate3d()
+</div>
+<p class="desc">
+    使用方法:
+<pre>
+    transform : rotate3d(45deg,45deg,45deg);
+    transform : rotateX(45deg);
+    transform : rotateY(45deg);
+    transform : rotateZ(45deg);
+</pre>
+<br/>
+描述:旋转rotate()函数通过指定的角度参数对元素根据对象原点指定一个2D旋转。它主要在二维空间内进行操作，接受一个角度值，用来指定旋转的幅度。如果这个值为正值，元素相对原点中心顺时针旋转；如果这个值为负值，元素相对原点中心逆时针旋转。
+</p>
+<div class="clearfix">
+<div class="rotate_none">
+    <img src="img/rx.png"/>
+    <img src="img/ry.png"/>
+    <img src="img/rz.png"/>
+</div>
+</div>
+
+
+<div class="h1">
+    B . 位移:translate3d()
+</div>
+<p class="desc">
+<pre>
+transform: translate3d(50px,50px 50px);
+transform: translateZ(tz)
+</pre>
+<br/>
+</p>
+<div class="translate_div">
+    <img src="img/card.png" class="img translate1"/>
+</div>
+<br/>
+<pre>
+transform: translate3d(100px,100px,100px);
+</pre>
+<div class="h1">
+    透视:perspective
+</div>
+<p class="desc">
+<pre>
+perspective: 200px;
+</pre>
+描述:CSS3 3D transform的透视点是在浏览器的前方,translateZ的功能就是让元素在自己的眼前或近或远.<br/><br>
+特点:translateZ值小于200的时候越靠近200越大，等于200铺满整屏，大于200看不到
+<br/>
+</p>
+<div class="clearfix">
+<img src="img/toushi.png"/>
+<div class="translate_div" style="perspective: 200px;">
+    <img src="img/card.png" class="img translate1"/>
+</div>
+</div>
+<br/><br/><br/><br/><br/><br/><br/><br/><br/>
+<pre>
+变形元素上定义[transform]:每个子元素都有自己的透视点，看到一样
+#darkred .box {
+    background-color: darkred;
+    transform: perspective(600px) rotateY(45deg);
+}
+父元素上定义:整个父元素作为透视节点，看到的方块不同
+#darkblue {
+    perspective: 600px;
+}
+perspective-origin: 0 0;
+视点聚点:默认就是所看舞台或元素的中心
+</pre>
+<div class="clearfix">
+<section id="darkred" class="con">
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+</section>
+
+<section id="darkblue" class="con">
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+</section>
+
+<section id="darkblue" class="con perspective-origin">
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+</section>
+<img src="img/perspective02.png"/>
+
+
+
+
+
+</div>
+
+
+
+
+
+<div class="h1">
+    C . 缩放:scale3d()
+</div>
+<p class="desc">
+    使用方法:
+<pre>
+transform : scaleZ(0.2);
+transform : scale3d(0.1,0.2,0.2);
+</pre>
+<br/>
+</p>
+<div class="scale_div">
+    <img src="img/card.png" class="img scale1"/>
+    <img src="img/card.png" class="img scale2"/>
+    <img src="img/card.png" class="img scale3"/>
+</div>
+<pre>
+transform: scaleZ(2) rotateX(45deg);
+
+transform: scaleZ(2) rotateY(45deg);
+
+transform: scale3d(0.5,0.5,2) rotateX(45deg);
+</pre>
+
+
+
+
+
+
+
+<div class="h1">
+    D . 矩阵matrix3d(sx, 0, 0, 0, 0, sy, 0, 0, 0, 0, sz, 0, 0, 0, 0, 1)
+</div>
+<p class="desc">
+<pre>
+    transform : matrix3d(sx, 0, 0, 0, 0, sy, 0, 0, 0, 0, sz, 0, 0, 0, 0, 1) ;
+</pre>
+<br/>
+<img src="img/matrix/scale-3d.png" width="100%"/>
+<pre>
+transform: matrix3d(2, 0, 0, 0, 0, 2, 0, 0, 0, 0, 2, 0, 0, 0, 0, 1);
+</pre>
+<div class="rotate_div">
+    <img src="img/card.png" class="img matrix3d-scale"/>
+</div>
+<img src="img/matrix/skew-x-y-3d.png" width="100%"/>
+<div class="rotate_div">
+    <img src="img/card.png" class="img matrix3d-skew-x-y"/>
+</div>
+<pre>
+transform: matrix3d(2, 0, 0, 0, 2, 2, 0, 0, 0, 0, 2, 0, 0, 0, 0, 1);
+</pre>
+
+
+
+<img src="img/matrix/skew-x-z-3d.png" width="100%"/>
+<div class="rotate_div">
+    <img src="img/card.png" class="img matrix3d-skew-x-z"/>
+</div>
+<pre>
+transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 2, 0, 1, 0, 0, 0, 0, 1);
+</pre>
+
+
+
+
+<img src="img/matrix/skew-y-x-3d.png" width="100%"/>
+<div class="rotate_div">
+    <img src="img/card.png" class="img matrix3d-skew-y-x"/>
+</div>
+<pre>
+transform: matrix3d(1, 2, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+</pre>
+
+
+<img src="img/matrix/skew-y-z-3d.png" width="100%"/>
+<div class="rotate_div">
+    <img src="img/card.png" class="img matrix3d-skew-y-z"/>
+</div>
+<pre>
+transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 2, 1, 0, 0, 0, 0, 1);
+</pre>
+
+
+
+<img src="img/matrix/skew-z-x-3d.png" width="100%"/>
+<div class="rotate_div">
+    <img src="img/card.png" class="img matrix3d-skew-z-x"/>
+</div>
+<pre>
+transform: matrix3d(1, 0, 2, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0, 0, 0, 1);
+</pre>
+
+
+<img src="img/matrix/skew-z-y-3d.png" width="100%"/>
+<div class="rotate_div">
+    <img src="img/card.png" class="img matrix3d-skew-z-y"/>
+</div>
+<pre>
+transform: matrix3d(1, 0, 0, 0, 0, 1, 2, 0, 0, 1, 1, 0, 0, 0, 0, 1);
+</pre>
+
+
+
+<img src="img/matrix/translate-3d.png" width="100%"/>
+<img src="img/matrix/rotate-3d.png" width="100%"/>
+
+</p>
+
+<div class="align_center"><img src="img/mm/diagram.png"/></div>
+<pre>
+&lt;div id="stage" class="stage_area">
+    &lt;div id="container" class="container" style="-webkit-transform: rotateY(80deg)">&lt;div>
+&lt;/div>
+.stage_area {
+    width: 900px;
+    min-height: 100px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 100px 50px;
+    perspective: 500px;
+    position: relative;
+}
+
+.container {
+    width: 128px;
+    height: 100px;
+    margin-left: -64px;
+    transition: transform 1s;
+    transform-style: preserve-3d;
+    position: absolute;
+    left: 50%;
+    border: 1px #f00 solid;
+}
+
+.piece {
+    width: 128px;
+    box-shadow: 0 1px 3px rgba(0,0,0,.5);
+    transition: opacity 1s, transform 1s;
+    position: absolute;
+    bottom: 0;
+}
+
+var htmlPic = '', arrayPic = [1, 2, 3, 4, 5, 6, 7, 8, 9], rotate = 360 / arrayPic.length;
+arrayPic.forEach(function(i) {
+    htmlPic = htmlPic + '&lt;img id="piece'+ i +'" src="img/mm/mm'+ i +'.jpg" class="piece" />';
+});
+var c = $("#container"), i = 0,r = 64 / Math.tan((rotate / 2 / 180) * Math.PI);
+c.html(htmlPic).click(function(){
+    //this.style["WebkitTransform"] = "rotateY("+ (-1 * rotate * ++i) +"deg)";
+    $(this).css('WebkitTransform',"rotateY("+ (-1 * rotate * ++i) +"deg)");
+});
+arrayPic.forEach(function(i, j) {
+    $("#piece" + i).css('WebkitTransform',"rotateY("+ j * rotate +"deg) translateZ("+ (r+40) +"px)");
+});
+</pre>
+<div id="stage" class="stage_area">
+    <div id="container" class="container" style="-webkit-transform: rotateY(80deg)"><div>
+</div>
+</body>
+</html>
+<script>
+    (function() {
+            var htmlPic = '', arrayPic = [1, 2, 3, 4, 5, 6, 7, 8, 9], rotate = 360 / arrayPic.length;
+            arrayPic.forEach(function(i) {
+                htmlPic = htmlPic + '<img id="piece'+ i +'" src="img/mm/mm'+ i +'.jpg" class="piece" />';
+            });
+            var c = $("#container"), i = 0,r = 64 / Math.tan((rotate / 2 / 180) * Math.PI);
+            c.html(htmlPic).click(function(){
+                $(this).css('WebkitTransform',"rotateY("+ (-1 * rotate * ++i) +"deg)");
+            });
+            arrayPic.forEach(function(i, j) {
+                $("#piece" + i).css('WebkitTransform',"rotateY("+ j * rotate +"deg) translateZ("+ (r+40) +"px)");
+            });
+
+    })();
+</script>
