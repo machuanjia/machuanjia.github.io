@@ -114,13 +114,13 @@ $(document).ready(function(){
         title:'Seeyon-UI-HTML5',
         body:'Seeyon-UI-HTML5 is the development study for seeyon.',
         footer:'Skill: html5、css3',
-        content:'<a href="seeyonui/html5/index.html" target="_blank"><img class="img-responsive" src="style/images/html5.png"/></a>'
+        content:'<a href="https://machuanjia.github.io/timma-seeyonui/html5/demo/api_geolocation.html" target="_blank"><img class="img-responsive" src="style/images/html5.png"/></a>'
     },{
         time:'7/06 2013',
         title:'Seeyon-UI',
         body:'Seeyon-UI is the development guider for seeyon.',
         footer:'Skill: jquery、html5、css3、js',
-        content:'<a href="seeyonui/v2.0/index.html" target="_blank"><img class="img-responsive" src="style/images/seeyonui.jpg"/></a>'
+        content:'<a href="https://machuanjia.github.io/timma-seeyonui/V2.0/index.html" target="_blank"><img class="img-responsive" src="style/images/seeyonui.jpg"/></a>'
     }];
     var _str = "";
     var _content = "";
