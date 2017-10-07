@@ -21,23 +21,17 @@ $(document).ready(function(){
         footer:'Skill: js css doc',
         content:'<a href="guide/site/index.html" target="_blank"><img class="img-responsive" src="style/images/guide.png"/></a>'
     },{
-        time:'8/19 2015',
-        title:'arithmetic',
-        body:'arithmetic',
-        footer:'Skill: js',
-        content:'<a href="arithmetic/index.html" target="_blank"><img class="img-responsive" src="style/images/arithmetic.gif"/></a>'
-    },{
         time:'8/14 2015',
-        title:'BOOTSTRAP MARKDOWN',
-        body:'BOOTSTRAP MARKDOWN',
-        footer:'Skill: BOOTSTRAP MARKDOWN',
-        content:'<a href="markdown/bootstrap-markdown-master/index.html" target="_blank"><img class="img-responsive" src="style/images/bootstrap-markdown.jpg"/></a>'
+        title:'ANGULAR-WT-EDITOR',
+        body:'ANGULAR-WT-EDITOR',
+        footer:'Skill:MARKDOWN',
+        content:'<a href="https://github.com/WorktileTech/angular-wt-editor" target="_blank"><img class="img-responsive" src="style/images/bootstrap-markdown.jpg"/></a>'
     },{
         time:'8/13 2015',
         title:'TITA',
         body:'TITA is the index page of beisen.',
         footer:'Skill: css3',
-        content:'<a href="animation/a6.html" target="_blank"><img class="img-responsive" src="style/images/tita.jpg"/></a>'
+        content:'<a href="https://machuanjia.github.io/timma-animation/a6.html" target="_blank"><img class="img-responsive" src="style/images/tita.jpg"/></a>'
     },{
         time:'8/11 2015',
         title:'THREEJS',
@@ -55,19 +49,19 @@ $(document).ready(function(){
         title:'MFISH',
         body:'MFISH is website.',
         footer:'Skill: css3、js',
-        content:'<a href="mfish/index.html" target="_blank"><img class="img-responsive" src="style/images/mfish.jpg"/></a>'
+        content:'<a href="https://machuanjia.github.io/timma-mfish/index.html" target="_blank"><img class="img-responsive" src="style/images/mfish.jpg"/></a>'
     },{
         time:'7/5 2015',
         title:'LESSCHAT_INDEX',
         body:'LESSCHAT_INDEX is the index page of lesschat.',
         footer:'Skill: css3、js',
-        content:'<a href="https://lesschat.com" target="_blank"><img class="img-responsive" src="style/images/lesschat.jpg"/></a>'
+        content:'<a href="https://worktile.com" target="_blank"><img class="img-responsive" src="style/images/lesschat.jpg"/></a>'
     },{
         time:'6/25 2015',
         title:'CSS3-LESSCHAT',
         body:'CSS3-LESSCHAT is the worker for time.',
         footer:'Skill: css3、js',
-        content:'<a href="animation/lesschat/index.html" target="_blank"><img class="img-responsive" src="style/images/date_count_down.jpg"/></a><a href="animation/lesschat.html" target="_blank"><img class="img-responsive" src="style/images/animation_lesschat.jpg"/></a>'
+        content:'<a href="https://machuanjia.github.io/timma-animation/lesschat/index.html" target="_blank"><img class="img-responsive" src="style/images/date_count_down.jpg"/></a><a href="animation/lesschat.html" target="_blank"><img class="img-responsive" src="style/images/animation_lesschat.jpg"/></a>'
     },{
         time:'6/24 2015',
         title:'IMG-SHOW',
@@ -79,12 +73,12 @@ $(document).ready(function(){
         title:'CSS3-ANIMATION',
         body:'CSS3-ANIMATION is the skill share for worktiles.',
         footer:'Skill: css3',
-        content:'<a href="animation/Animation.pptx" target="_blank"><img class="img-responsive" src="style/images/animation0.jpg"/></a>' +
-        '<a href="animation/a3.html" target="_blank"><img class="img-responsive" src="style/images/animation1.jpg"/></a>' +
-        '<a href="animation/a4.html" target="_blank"><img class="img-responsive" src="style/images/animation2.jpg"/></a>' +
-        '<a href="animation/a1.html" target="_blank"><img class="img-responsive" src="style/images/animation3.jpg"/></a>' +
-        '<a href="animation/a2.html" target="_blank"><img class="img-responsive" src="style/images/animation4.jpg"/></a>' +
-        '<a href="animation/a5.html" target="_blank"><img class="img-responsive" src="style/images/animation5.jpg"/></a>'
+        content:'<a href="https://machuanjia.github.io/timma-animation/Animation.pptx" target="_blank"><img class="img-responsive" src="style/images/animation0.jpg"/></a>' +
+        '<a href="https://machuanjia.github.io/timma-animation/a3.html" target="_blank"><img class="img-responsive" src="style/images/animation1.jpg"/></a>' +
+        '<a href="https://machuanjia.github.io/timma-animation/a4.html" target="_blank"><img class="img-responsive" src="style/images/animation2.jpg"/></a>' +
+        '<a href="https://machuanjia.github.io/timma-animation/a1.html" target="_blank"><img class="img-responsive" src="style/images/animation3.jpg"/></a>' +
+        '<a href="https://machuanjia.github.io/timma-animation/a2.html" target="_blank"><img class="img-responsive" src="style/images/animation4.jpg"/></a>' +
+        '<a href="https://machuanjia.github.io/timma-animation/a5.html" target="_blank"><img class="img-responsive" src="style/images/animation5.jpg"/></a>'
     },{
         time:'6/18 2015',
         title:'YC-UI',
