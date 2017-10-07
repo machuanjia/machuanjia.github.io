@@ -108,7 +108,7 @@ $(document).ready(function(){
         title:'Seeyon-UI-MOBILE',
         body:'Seeyon-UI-MOBILE is the development specification for seeyon.',
         footer:'Skill: jquery-mobile、html5、css3',
-        content:'<a href="seeyonmobileui/index.html" target="_blank"><img class="img-responsive" src="style/images/seeyonmobile.jpg"/></a>'
+        content:'<a href="https://machuanjia.github.io/timma-seeyonui-mobile/index.html" target="_blank"><img class="img-responsive" src="style/images/seeyonmobile.jpg"/></a>'
     },{
         time:'9/12 2013',
         title:'Seeyon-UI-HTML5',
