@@ -3,6 +3,55 @@
  */
 $(document).ready(function(){
     var entitys = [{
+        time:'8/10 2017',
+        title:'target map',
+        body:'target map',
+        footer:'Skill: svg angularjs less',
+        content:'<a href="https://github.com/machuanjia/angular-target-map" target="_blank"><h3>target map</h3></a><a href="https://atweb.worktile.com/okr/map" target="_blank">worktile target map</a>'
+    },{
+        time:'5/9 2017',
+        title:'calendar helper',
+        body:'calendar helper',
+        footer:'Skill: svg angularjs less',
+        content:'<a href="https://atweb.worktile.com/calendar/my" target="_blank"><h3>calendar helper</h3></a>'
+    },{
+        time:'10/23 2016',
+        title:'css loading',
+        body:'css loading',
+        footer:'Skill: css3',
+        content:'<a href="https://machuanjia.github.io/timma-h5/" target="_blank"><h3>css loading</h3></a>'
+    },{
+        //
+        time:'8/20 2016',
+        title:'freewall sort',
+        body:'freewall sort',
+        footer:'Skill: freewall angularjs',
+        content:'<a href="https://github.com/machuanjia/freewall-sort/blob/master/freewall" target="_blank"><h3>freewall sort</h3></a>'
+    },{
+        time:'7/20 2016',
+        title:'jedate',
+        body:'jedate',
+        footer:'Skill: jedate',
+        content:'<a href="http://www.jayui.com/uidoc/jedate.html" target="_blank"><h3>jedate</h3></a>'
+    },{
+        time:'5/6 2016',
+        title:'angular-gantt-svg',
+        body:'angular-gantt-svg',
+        footer:'Skill: angular svg js less gulp',
+        content:'<a href="https://github.com/machuanjia/angular-gantt-svg" target="_blank"><h3>angular-gantt-svg</h3></a>'
+    },{
+        time:'3/10 2016',
+        title:'h5-mobile',
+        body:'h5-mobile',
+        footer:'Skill: css html mobile zpeto',
+        content:'<a href="https://machuanjia.github.io/h5-mobile/#&pageHome" target="_blank"><h3>h5-mobile</h3></a>'
+    },{
+        time:'10/20 2015',
+        title:'flex',
+        body:'flex',
+        footer:'Skill: css less',
+        content:'<a href="https://github.com/machuanjia/timma-flex" target="_blank"><h3>flex</h3></a>'
+    },{
         time:'9/22 2015',
         title:'upload-file',
         body:'upload-file',
