@@ -3,7 +3,15 @@
  */
 $(document).ready(function(){
     var entitys = [{
-        time:'8/10 2017',
+        time:'15/9 2017',
+        title:'react',
+        body:'react',
+        type:'video',
+        src:'rn.mov',
+        footer:'Skill: react react-native es6',
+        content:'<a href="https://github.com/machuanjia/rn" target="_blank"><h3>源码戳这里</h3></a>'
+    },{
+        time:'8/9 2017',
         title:'target map',
         body:'target map',
         footer:'Skill: svg angularjs less',
@@ -192,6 +200,10 @@ $(document).ready(function(){
 
             _str+='<div class="content">';
             _str+=(item.content?item.content:item.title)
+            if(item.type === 'video'){
+                _str+='<video src="style/images/'+item.src+'" width="500" height="600" controls autobuffer></video>';
+            }
+
             _str+='</div>';
         _str+='</div>';
 
