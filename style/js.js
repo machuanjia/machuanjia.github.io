@@ -3,6 +3,12 @@
  */
 $(document).ready(function(){
     var entitys = [{
+        time:'10/10 2017',
+        title:'vue',
+        body:'vue',
+        footer:'Skill: vue vue-router vue-i18n webpack axios es6',
+        content:'<a href="https://github.com/machuanjia/leave" target="_blank"><h3>源码戳这里</h3></a>'
+    },{
         time:'20/9 2017',
         title:'electron',
         body:'electron',
