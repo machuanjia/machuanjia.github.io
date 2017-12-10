@@ -3,6 +3,30 @@
  */
 $(document).ready(function(){
     var entitys = [{
+        time:'20/9 2017',
+        title:'electron',
+        body:'electron',
+        footer:'Skill: electron es6',
+        content:'<div>' +
+        '1. npm install  electron -g  error \n' +
+        '<br/>'+
+        '解决:sudo npm install -g electron --unsafe-perm=true --allow-root\n' +
+        '<br/><br/>' +
+        '2.安装wine\n' +
+        '<br/>'+
+        'https://newsn.net/say/mac-wine.html\n' +
+        '<br/><br/>' +
+        '3.打包\n' +
+        '<br/>'+
+        'http://blog.csdn.net/arvin0/article/details/52690023\n' +
+        '<br/><br/>' +
+        '4.打包要翻墙' +
+        '<br/>'+
+        '<br/>'+
+        '<a href="https://github.com/machuanjia/timma-electron">github demo</a>' +
+        '<br/>'+
+        '</div>'
+    },{
         time:'15/9 2017',
         title:'react',
         body:'react',
